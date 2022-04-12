@@ -1,5 +1,6 @@
 package com.pagamentos.domain;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -9,8 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Descricao {
+public class Descricao implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,6 +25,22 @@ public class Descricao {
 	private Long nsu;
 	private Integer codigoAutorizacao;
 	private String status;
+
+	public Descricao() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Descricao(Long id, Double valor, LocalDateTime dataHora, String estabelecimento, Long nsu,
+			Integer codigoAutorizacao, String status) {
+		super();
+		this.id = id;
+		this.valor = valor;
+		this.dataHora = dataHora;
+		this.estabelecimento = estabelecimento;
+		this.nsu = nsu;
+		this.codigoAutorizacao = codigoAutorizacao;
+		this.status = status;
+	}
 
 	public Long getId() {
 		return id;

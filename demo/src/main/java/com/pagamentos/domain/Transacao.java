@@ -1,5 +1,6 @@
 package com.pagamentos.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -9,8 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Transacao {
+public class Transacao implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -19,6 +24,18 @@ public class Transacao {
 	private Descricao descricao;
 	@OneToOne
 	private FormaPagamento formaPagamento;
+
+	public Transacao() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Transacao(Long id, String cartao, Descricao descricao, FormaPagamento formaPagamento) {
+		super();
+		this.id = id;
+		this.cartao = cartao;
+		this.descricao = descricao;
+		this.formaPagamento = formaPagamento;
+	}
 
 	public Long getId() {
 		return id;
